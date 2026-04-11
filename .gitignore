@@ -1,0 +1,10 @@
+.venv/
+
+images/*
+!images/.gitkeep
+
+results/*
+!results/.gitkeep
+
+checkpoints/*
+!checkpoints/.gitkeep

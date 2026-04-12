@@ -61,7 +61,7 @@ def png_to_jpeg(input_path: Path, output_path: Path, quality: int) -> None:
     img.save(output_path, format="JPEG", quality=quality)
 
 
-def depth_heatmap(img_depth: np.ndarray, output_path: Path) -> None:
+def save_depth_heatmap(img_depth: np.ndarray, output_path: Path) -> None:
     normalized = (
         (img_depth - img_depth.min()) / (img_depth.max() - img_depth.min()) * 255
     ).astype(np.uint8)

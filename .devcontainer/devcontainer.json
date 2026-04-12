@@ -14,5 +14,8 @@
       }
     }
   },
-  "remoteUser": "vscode"
+  "remoteUser": "vscode",
+  "remoteEnv": {
+        "PYTHONPATH": "${containerWorkspaceFolder}"
+    }
 }

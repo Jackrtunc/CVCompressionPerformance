@@ -5,6 +5,11 @@ from depth_anything_v2.depth_anything_v2.dpt import DepthAnythingV2
 from pathlib import Path
 from PIL import Image
 
+IMAGES_PATH = Path("images")
+ORIGINAL_IMAGES_NAME = "original"
+ORIGINAL_IMAGES_PATH = IMAGES_PATH / ORIGINAL_IMAGES_NAME
+RESULTS_PATH = Path("results")
+
 
 # We're using the vitl model
 def get_model(encoder: str) -> DepthAnythingV2:

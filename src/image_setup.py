@@ -1,5 +1,4 @@
 from util import *
-import shutil
 from pathlib import Path
 
 

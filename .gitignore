@@ -1,7 +1,7 @@
 .venv/
 
-images/*
-!images/.gitkeep
+images/original/*
+!images/original/.gitkeep
 
 results/*
 !results/.gitkeep

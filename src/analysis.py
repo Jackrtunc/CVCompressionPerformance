@@ -7,17 +7,15 @@ def main():
         writer = csv.writer(f)
         model = get_model("vitl")
 
-        baselines = [get_depth_map(img, model) for img in ORIGINAL_IMAGES_PATH.iterdir()]
+        baselines = [{img.stem: get_depth_map(img, model)} for img in ORIGINAL_IMAGES_PATH.iterdir() if img.suffix == ".png"]
 
-        for baseline in baselines:
-            print(baseline)
 
-        # for dir in IMAGES_PATH.iterdir():
-        #     if dir.name != ORIGINAL_IMAGES_NAME:
-        #         quality = int(dir.name)
+        for dir in IMAGES_PATH.iterdir():
+            if dir.name != ORIGINAL_IMAGES_NAME:
+                quality = int(dir.name)
 
-        #         if quality not in range(1, 96):
-        #             raise ValueError("Found invalid quality directory")
+                if quality not in range(1, 96):
+                    raise ValueError("Found invalid quality directory")
                 
 
 

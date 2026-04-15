@@ -1,5 +1,6 @@
 .venv/
 
+images/*
 images/original/*
 !images/original/.gitkeep
 

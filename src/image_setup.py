@@ -1,6 +1,4 @@
 from util import png_to_jpeg, IMAGES_PATH, ORIGINAL_IMAGES_PATH
-from pathlib import Path
-
 
 # Compress original images at different jpeg qualities
 def main():

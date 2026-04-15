@@ -75,7 +75,7 @@ def save_depth_heatmap(img_depth: np.ndarray, output_path: Path) -> None:
 
 
 # Normalized mean absolute error
-def nmae(baseline: np.ndarray, compressed: np.ndarray) -> float:
+def calculate_nmae(baseline: np.ndarray, compressed: np.ndarray) -> float:
     difference = baseline - compressed
     mae = np.mean(np.abs(difference))
     baseline_range = baseline.max() - baseline.min()
@@ -83,7 +83,7 @@ def nmae(baseline: np.ndarray, compressed: np.ndarray) -> float:
 
 
 # Normalized root mean squared error
-def nrmse(baseline: np.ndarray, compressed: np.ndarray) -> float:
+def calculate_nrmse(baseline: np.ndarray, compressed: np.ndarray) -> float:
     difference = baseline - compressed
     rmse = np.sqrt(np.mean(difference**2))
     baseline_range = baseline.max() - baseline.min()

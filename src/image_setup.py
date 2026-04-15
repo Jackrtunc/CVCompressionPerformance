@@ -1,5 +1,6 @@
 from util import png_to_jpeg, IMAGES_PATH, ORIGINAL_IMAGES_PATH
 
+
 # Compress original images at different jpeg qualities
 def main():
 
@@ -14,9 +15,7 @@ def main():
 
         for original_img in ORIGINAL_IMAGES_PATH.iterdir():
             if original_img.is_file() and original_img.suffix == ".png":
-                png_to_jpeg(
-                    original_img, qdir / f"{original_img.stem}.jpg", quality
-                )
+                png_to_jpeg(original_img, qdir / f"{original_img.stem}.jpg", quality)
 
 
 if __name__ == "__main__":

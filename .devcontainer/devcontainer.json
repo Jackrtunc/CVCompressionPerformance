@@ -1,6 +1,7 @@
 {
   "name": "Final Project",
-  "image": "mcr.microsoft.com/devcontainers/python:3.14",
+  "image": "pytorch/pytorch:2.5.1-cuda12.1-cudnn9-runtime",
+  "runArgs": ["--gpus", "all"],
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,7 +15,7 @@
       }
     }
   },
-  "remoteUser": "vscode",
+  "remoteUser": "root",
   "remoteEnv": {
         "PYTHONPATH": "${containerWorkspaceFolder}"
     }

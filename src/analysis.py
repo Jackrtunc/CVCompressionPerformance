@@ -8,12 +8,13 @@ def main():
         headers = ["id", "quality", "height", "width", "nmae", "nrmse"]
         writer = csv.DictWriter(f, fieldnames=headers)
         writer.writeheader()
+        f.flush()
 
-        baseline_depth_maps = {
-            img.stem: get_depth_map(img, model)
-            for img in ORIGINAL_IMAGES_PATH.iterdir()
-            if img.suffix == ".png"
-        }
+        baseline_depth_maps = {}
+        for img in ORIGINAL_IMAGES_PATH.iterdir():
+            if img.suffix == ".png":
+                baseline_depth_maps[img.stem] = get_depth_map(img, model)
+                print(f"Processing file {img.name} quality baseline")
 
         for dir in IMAGES_PATH.iterdir():
             if dir.name != ORIGINAL_IMAGES_NAME:
@@ -22,13 +23,11 @@ def main():
                 if quality not in range(1, 96):
                     raise ValueError(f"Invalid quality subdirectory: {dir.name}.")
                 
-                print(f"Processing quality subdirectory {quality}.")
-
                 for img in dir.iterdir():
                     if img.suffix != ".jpg":
                         raise ValueError(f"Invalid input file: {img.name}.")
                     
-                    print(f"Processing file {img.name}.")
+                    print(f"Processing file {img.name} quality {quality}.")
 
                     id = img.stem
                     baseline_depth_map = baseline_depth_maps[id]
@@ -47,6 +46,7 @@ def main():
                             "nrmse": nrmse,
                         }
                     )
+                    f.flush()
 
 
 if __name__ == "__main__":

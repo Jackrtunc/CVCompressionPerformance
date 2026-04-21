@@ -22,11 +22,11 @@ def main():
 
                 if quality not in range(1, 96):
                     raise ValueError(f"Invalid quality subdirectory: {dir.name}.")
-                
+
                 for img in dir.iterdir():
                     if img.suffix != ".jpg":
                         raise ValueError(f"Invalid input file: {img.name}.")
-                    
+
                     print(f"Processing file {img.name} quality {quality}.")
 
                     id = img.stem

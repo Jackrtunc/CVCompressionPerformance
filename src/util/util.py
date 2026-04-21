@@ -66,11 +66,21 @@ def png_to_jpeg(input_path: Path, output_path: Path, quality: int) -> None:
     img.save(output_path, format="JPEG", quality=quality)
 
 
-def save_depth_heatmap(img_depth: np.ndarray, output_path: Path) -> None:
-    normalized = (
-        (img_depth - img_depth.min()) / (img_depth.max() - img_depth.min()) * 255
-    ).astype(np.uint8)
-    img = Image.fromarray(normalized)
+def save_depth_heatmap(
+    img_depth: np.ndarray, output_path: Path, colormap: int = cv2.COLORMAP_TURBO
+) -> None:
+    depth_min = img_depth.min()
+    depth_max = img_depth.max()
+    depth_range = depth_max - depth_min
+
+    if depth_range == 0:
+        normalized = np.zeros_like(img_depth, dtype=np.uint8)
+    else:
+        normalized = ((img_depth - depth_min) / depth_range * 255).astype(np.uint8)
+
+    colored_bgr = cv2.applyColorMap(normalized, colormap)
+    colored_rgb = cv2.cvtColor(colored_bgr, cv2.COLOR_BGR2RGB)
+    img = Image.fromarray(colored_rgb)
     img.save(output_path, format="PNG")
 
 

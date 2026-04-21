@@ -9,3 +9,5 @@ results/*
 
 checkpoints/*
 !checkpoints/.gitkeep
+
+__pycache__/
